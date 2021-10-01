@@ -21,12 +21,6 @@ public class AdminController {
 	{
 		System.out.println("Enter Your Login Credentials : ");		
 	}
-	
-	@PostMapping("/airline/inventory/add")
-	void addInventory(@RequestBody User user)
-	{
-		System.out.println("********** Add Schedule ************");
-	}
-	
+		
 
 }
