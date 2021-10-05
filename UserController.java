@@ -10,12 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/api/v1.0/flight")
-
 @RestController
-public class UserController {
+public class UserController{
+	@Autowired
+	UserService userService;
 	
 	@Autowired
 	FlightService flightService;
+	
+	
 	
 	@GetMapping("/ticket/{pnr}")
 	void getBookedTicketDetails (@PathVariable String pnr)
@@ -37,9 +40,12 @@ public class UserController {
 	}
 	
 	@PostMapping("/serach")
-	void searchFlights(@RequestBody User user)
+	void searchFlights(@RequestBody Flight flight)
 	{
 		System.out.println("Enter the details of the flight you want to search : ");
+//		 List<Flight> flights = flightService.searchFlight(flight);
+//		 return flights;
+		
 	}
 	
 	@DeleteMapping("/booking/cancel/{pnr}")
@@ -48,13 +54,23 @@ public class UserController {
 		System.out.println("Cancellation Window");
 	}
 	
-	@PostMapping("/airline/inventory/add")
-	void addInventory(@RequestBody Flight flight)
-	{
-		System.out.println("********** Book a Flight ************");
-		flightService.save(flight);
-	}
 
+	@PostMapping ("/")
+	int saveUser(@RequestBody User user ) {
+		userService.Save(user);
+		System.out.println("Details of Booking");
+		System.out.println(" Name : "+ user.getName());
+		System.out.println(" Email : "+ user.getEmail());
+		System.out.println(" No. Of Tickets  : "+ user.getNoOfTickets());
+		System.out.println(" Flight Id  : "+ user.getFlightId());
+		System.out.println(" Gender : "+ user.getGender());
+		System.out.println(" Age : "+ user.getAge());
+	    int pnr = userService.generatePnr();
+	    System.out.println("Pnr Controller : "+pnr);
+		return pnr;
+	}
 	
 
 }
+
+

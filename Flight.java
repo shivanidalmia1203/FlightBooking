@@ -1,9 +1,5 @@
 package com.example.FlightBooking;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,14 +10,12 @@ public class Flight {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	
 	int flight_id;
 	String airline;
 	String source , destination;
-	Date start_date , end_date;
+	String start_date , end_date;
 	String start_time , end_time;
-	List<String> days = new ArrayList<>();
 	int noOfBusinessClassSeats;
 	int noOfEconomyClassSeats;
 	int noOfRows;
@@ -52,16 +46,16 @@ public class Flight {
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-	public Date getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 	public String getStart_time() {
@@ -75,12 +69,6 @@ public class Flight {
 	}
 	public void setEnd_time(String end_time) {
 		this.end_time = end_time;
-	}
-	public List<String> getDays() {
-		return days;
-	}
-	public void setDays(List<String> days) {
-		this.days = days;
 	}
 	public int getNoOfBusinessClassSeats() {
 		return noOfBusinessClassSeats;
